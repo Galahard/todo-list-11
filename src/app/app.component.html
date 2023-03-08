@@ -15,11 +15,38 @@
       >Clear All
       </button>
     </div>
+    <div>
+      <div class="container text-center mb-3 mt-3">
+        <div class="row ">
+          <div class="col">
+            <button class="btn delete btn-primary" type="button">Show Active Tasks</button>
+          </div>
+
+          <div class="col">
+            <button class="btn done btn-primary" type="button">Show Done Tasks</button>
+          </div>
+          <div class="col">
+            <button class="btn delete btn-primary" type="button">Show All Tasks</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
   <app-task (checkTask)="checkTask(task.id) " *ngFor="let task of todoTasks" [deleteFn]="deleteTaskCallback"
             [task]="task">
 
   </app-task>
-
+  <div>
+    <nav>
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
 
 </div>
