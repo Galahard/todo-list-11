@@ -1,0 +1,25 @@
+<div class="container  fPlace mx-10 my-5 px-3 py-3 w-50 p-2 bg-secondary rounded">
+  <div class="sPlace ">
+    <div class="input-group">
+      <input [formControl]="newTaskControl" class="form-control " placeholder='Input Task...' type="text">
+      <button (click)="addTask()"
+              [disabled]="newTaskControl.invalid"
+              class="btn btn-primary"
+              type="button"
+      > Submit
+      </button>
+      <button (click)="clearTasks()"
+              [disabled]="!todoTasks.length"
+              class="btn btn-danger"
+              type="button"
+      >Clear All
+      </button>
+    </div>
+  </div>
+  <app-task (checkTask)="checkTask(task.id) " *ngFor="let task of todoTasks" [deleteFn]="deleteTaskCallback"
+            [task]="task">
+
+  </app-task>
+
+
+</div>
