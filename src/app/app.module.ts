@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav/nav.component';
 import {TaskComponent} from './task/task/task.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

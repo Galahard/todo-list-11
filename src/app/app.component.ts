@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TaskInterface} from './task/task/taskInterface'
 
 import {TaskService} from "./task/task.service";
@@ -11,7 +11,10 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
   title = 'angular todo';
+  p: number = 1;
 
+  tasksPerPage: number = 5;
+  totalTasks: any;
 
   todoTasks: TaskInterface[] = [];
 
@@ -28,7 +31,7 @@ export class AppComponent implements OnInit {
 
   getTasks() {
     this.todoTasks = this.tasksService.getTasks();
-
+    this.totalTasks = this.todoTasks.length;
   }
 
   addTask() {
@@ -49,10 +52,10 @@ export class AppComponent implements OnInit {
     this.getTasks();
   }
 
-  deleteTask(id: number) {
-    this.tasksService.deleteTask(id);
-    this.getTasks();
-  }
+  // deleteTask(id: number) {
+  //   this.tasksService.deleteTask(id);
+  //   this.getTasks();
+  // }
 
   checkTask(id: number) {
     this.tasksService.checkTask(id);
