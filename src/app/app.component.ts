@@ -62,5 +62,13 @@ export class AppComponent implements OnInit {
     this.getTasks();
   }
 
+  showActTasks() {
+    this.todoTasks = this.tasksService.showActTasks();
+  }
+
+  showDoneTasks() {
+    this.todoTasks = this.tasksService.showDoneTasks();
+  }
+
 }
 

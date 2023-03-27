@@ -14,7 +14,7 @@ export class TaskService {
 
   addTask(title: string) {
     const id = Math.max(...this.tasks.map(task => task.id), 0) + 1;
-    this.tasks.push({id: id, title: title, checkbox: false});
+    this.tasks.unshift({id: id, title: title, checkbox: false});
     this.saveTasks();
 
   };
@@ -54,6 +54,19 @@ export class TaskService {
   private loadTasks() {
     this.tasks = JSON.parse(localStorage.getItem('session') ?? '[]');
 
+  }
+
+
+  showActTasks() {
+    this.loadTasks();
+    this.tasks = this.tasks.filter(tasks => !tasks.checkbox);
+    return this.tasks;
+  }
+
+  showDoneTasks() {
+    this.loadTasks();
+    this.tasks = this.tasks.filter(tasks => tasks.checkbox);
+    return this.tasks;
   }
 
 
