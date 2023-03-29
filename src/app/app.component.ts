@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
 
   tasksPerPage: number = 5;
   totalTasks: any;
+  actTasks: number;
+  doneTasks: number;
 
   todoTasks: TaskInterface[] = [];
 
@@ -30,8 +32,11 @@ export class AppComponent implements OnInit {
   }
 
   getTasks() {
+    this.showDoneTasks();
+    this.showActTasks();
     this.todoTasks = this.tasksService.getTasks();
     this.totalTasks = this.todoTasks.length;
+
   }
 
   addTask() {
@@ -64,11 +69,14 @@ export class AppComponent implements OnInit {
 
   showActTasks() {
     this.todoTasks = this.tasksService.showActTasks();
+    this.actTasks = this.todoTasks.length;
   }
 
   showDoneTasks() {
     this.todoTasks = this.tasksService.showDoneTasks();
+    this.doneTasks = this.todoTasks.length;
   }
+
 
 }
 

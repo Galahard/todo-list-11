@@ -6,6 +6,9 @@ import {TaskInterface} from "./task/taskInterface";
 })
 export class TaskService {
   session: any;
+  actTasks: TaskInterface[] = [];
+  doneTasks: TaskInterface[] = [];
+
 
   tasks: TaskInterface[] = [];
 
@@ -24,7 +27,6 @@ export class TaskService {
     this.loadTasks();
     return this.tasks;
 
-
   };
 
   deleteTask(id: number) {
@@ -41,9 +43,9 @@ export class TaskService {
   checkTask(id: number) {
     const checkedTask = this.tasks.find(task => task.id === id);
     if (checkedTask) {
-      checkedTask.checkbox = !checkedTask.checkbox
+      checkedTask.checkbox = !checkedTask.checkbox;
     }
-    this.saveTasks();
+    this.saveTasks(); //вопрос
   };
 
   private saveTasks() {
@@ -59,15 +61,17 @@ export class TaskService {
 
   showActTasks() {
     this.loadTasks();
-    this.tasks = this.tasks.filter(tasks => !tasks.checkbox);
-    return this.tasks;
+    this.actTasks = this.tasks.filter(tasks => !tasks.checkbox);
+    return this.actTasks;
   }
 
   showDoneTasks() {
     this.loadTasks();
-    this.tasks = this.tasks.filter(tasks => tasks.checkbox);
-    return this.tasks;
+    this.doneTasks = this.tasks.filter(tasks => tasks.checkbox);
+    return this.doneTasks;
   }
+
+
 
 
 }

@@ -19,14 +19,16 @@
       <div class="container text-center mb-3 mt-3">
         <div class="row ">
           <div class="col">
-            <button (click)="showActTasks()" class="btn delete btn-primary" type="button">Show Active Tasks</button>
-          </div>
-
-          <div class="col">
-            <button (click)="showDoneTasks()" class="btn done btn-primary" type="button">Show Done Tasks</button>
+            <button (click)="showActTasks()"
+                    class="btn act btn-primary" type="button">Show Active Tasks {{actTasks}}</button>
           </div>
           <div class="col">
-            <button (click)="getTasks()" class="btn delete btn-primary" type="button">Show All Tasks</button>
+            <button (click)="showDoneTasks()" class="btn done btn-primary" type="button">Show Done
+              Tasks {{doneTasks}}</button>
+          </div>
+          <div class="col">
+            <button (click)="getTasks()" class="btn all btn-primary " type="button">Show All
+              Tasks {{totalTasks}}</button>
           </div>
 
         </div>
