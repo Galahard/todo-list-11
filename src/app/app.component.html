@@ -1,8 +1,9 @@
-<div class="container  fPlace mx-10 my-5 px-3 py-3 w-50 h-50 p-2 bg-secondary rounded ">
+<div class="container  fPlace mx-10 my-5 px-3 py-3 w-50 p-2 bg-secondary rounded ">
   <div class="sPlace ">
     <div class="input-group">
       <input (keydown.enter)="addTask()" [formControl]="newTaskControl" class="form-control "
              placeholder='Input Task...' type="text">
+
       <button (click)="addTask()"
               [disabled]="newTaskControl.invalid"
               class="btn btn-primary"
@@ -29,7 +30,7 @@
           </div>
           <div class="col">
             <button (click)="getTasks()" class="btn all btn-primary " type="button">Show All
-              Tasks {{totalTasks}}</button>
+              Tasks {{totalTasks}} </button>
           </div>
 
         </div>
@@ -42,6 +43,7 @@
             [task]="task">
 
   </app-task>
+  <p>{{progress| percent }}</p>
   <div class="mt-8 py-5 flex text-center">
     <pagination-controls (pageChange)="p = $event" nextLabel=" " previousLabel=" "></pagination-controls>
   </div>

@@ -9,7 +9,6 @@ export class TaskService {
   actTasks: TaskInterface[] = [];
   doneTasks: TaskInterface[] = [];
 
-
   tasks: TaskInterface[] = [];
 
   constructor() {

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   totalTasks: any;
   actTasks: number;
   doneTasks: number;
-
+  progress: number;
   todoTasks: TaskInterface[] = [];
 
   newTaskControl = new FormControl('', Validators.required);
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     this.showActTasks(); //Вопрос
     this.todoTasks = this.tasksService.getTasks();
     this.totalTasks = this.todoTasks.length;
+    this.showProgress();
 
   }
 
@@ -77,6 +78,10 @@ export class AppComponent implements OnInit {
     this.doneTasks = this.todoTasks.length;
   }
 
+  showProgress() {
+    this.progress = this.actTasks / this.totalTasks
+    return this.progress
+  }
 
 }
 
