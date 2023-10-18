@@ -1,7 +1,8 @@
 <div class="container  fPlace mx-10 my-5 px-3 py-3 w-50 p-2 bg-secondary rounded">
   <div class="sPlace ">
     <div class="input-group">
-      <input [formControl]="newTaskControl" class="form-control " placeholder='Input Task...' type="text">
+      <input (keydown.enter)="addTask()" [formControl]="newTaskControl" class="form-control "
+             placeholder='Input Task...' type="text">
       <button (click)="addTask()"
               [disabled]="newTaskControl.invalid"
               class="btn btn-primary"

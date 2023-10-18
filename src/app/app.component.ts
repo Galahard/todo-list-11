@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   getTasks() {
     this.showDoneTasks();
-    this.showActTasks();
+    this.showActTasks(); //Вопрос
     this.todoTasks = this.tasksService.getTasks();
     this.totalTasks = this.todoTasks.length;
 

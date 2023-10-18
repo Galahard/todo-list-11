@@ -45,7 +45,7 @@ export class TaskService {
     if (checkedTask) {
       checkedTask.checkbox = !checkedTask.checkbox;
     }
-    this.saveTasks(); //вопрос
+    this.saveTasks();
   };
 
   private saveTasks() {
