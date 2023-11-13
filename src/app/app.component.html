@@ -34,7 +34,7 @@
               Tasks {{doneTasks}}</button>
           </div>
           <div class="col">
-            <button (click)="getTasks(); clickedAll=true; clickedDone=false; clickedAct=false"
+            <button (click)="showAllTasks(); clickedAll=true; clickedDone=false; clickedAct=false"
                     [ngClass]="clickedAll   ? 'btnActive' : 'none'"
 
                     class="btn all btn-primary " type="button">All

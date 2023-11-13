@@ -77,7 +77,10 @@ export class TaskService {
     return this.doneTasks;
   }
 
-
+  showAllTasks() {
+    this.loadTasks();
+    return this.tasks
+  }
 
 
 }

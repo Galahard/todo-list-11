@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   totalTasks: any;
   actTasks: number;
   doneTasks: number;
+
   progress: number;
   todoTasks: TaskInterface[] = [];
 
@@ -37,11 +38,15 @@ export class AppComponent implements OnInit {
   }
 
   getTasks() {
-    this.showDoneTasks();
-    this.showActTasks(); //Вопрос
-    this.todoTasks = this.tasksService.getTasks();
-    this.totalTasks = this.todoTasks.length;
+    if (this.clickedAct) {
+      this.showActTasks();
+    } else if (this.clickedDone) {
+      this.showDoneTasks();
+    } else {
+      this.showAllTasks();
+    }
     this.showProgress();
+
 
   }
 
@@ -75,7 +80,7 @@ export class AppComponent implements OnInit {
 
   checkTask(id: number) {
     this.tasksService.checkTask(id);
-    this.getTasks();
+    this.getTasks();   // вопрос с фильтром
   }
 
   showActTasks() {
@@ -89,15 +94,19 @@ export class AppComponent implements OnInit {
     this.doneTasks = this.todoTasks.length;
   }
 
+  showAllTasks() {
+    this.todoTasks = this.tasksService.showAllTasks();
+    this.totalTasks = this.todoTasks.length;
+
+  }
+
+
   showProgress() {
     this.progress = this.doneTasks / this.totalTasks;
     return this.progress
   }
 
-//changeButton(){
-  // this.clicked=!this.clicked;
 
-//}
 
 
 }
