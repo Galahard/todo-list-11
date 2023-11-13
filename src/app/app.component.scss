@@ -1,4 +1,3 @@
-::ng-deep {
   .ngx-pagination {
     display: flex;
     justify-content: center;
@@ -7,73 +6,28 @@
   }
 
   .ngx-pagination li {
-    width: 35px;
-    height: 35px;
-    border-radius: 50% !important;
-    background: #f8f8f8;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+
+    border-radius: 50%;
   }
 
-  .ngx-pagination .small-screen {
-    display: none !important;
-  }
 
-  .ngx-pagination .pagination-previous,
-  .ngx-pagination .pagination-next {
-    a, span {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      color: #f8f8f8;
-    }
-  }
-
-  .ngx-pagination .pagination-previous a:before,
-  .ngx-pagination .pagination-previous.disabled:before,
-  .ngx-pagination .pagination-next::before {
-    margin-right: 0px !important;
-    font-size: 26px;
-    margin-top: -7px;
-    position: absolute;
+  .modal {
+    display: block;
+    position: fixed;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    color: #2199e8;
-    left: 0;
-    pointer-events: none;
+    display: none;
   }
 
-  .ngx-pagination .pagination-next::before {
-    content: '\bb';
+
+  .btn:active {
+    transform: translateY(4px);
   }
 
-  .ngx-pagination .pagination-next::after {
-    display: none !important;
+  .btnActive {
+    background-color: darkslateblue;
   }
 
-  .ngx-pagination .pagination-previous.disabled:before,
-  .ngx-pagination .pagination-previous a:before,
-  .ngx-pagination .pagination-next::before {
-    opacity: 0.4;
+  .notDisplay {
+    display: none;
   }
-
-  .ngx-pagination .pagination-previous.disabled:hover {
-    background-color: #f8f8f8 !important;
-  }
-
-  .ngx-pagination a:hover,
-  .ngx-pagination button:hover {
-    background: initial !important;
-  }
-}
-
-.btn-primary:focus {
-  background-color: gray;
-}

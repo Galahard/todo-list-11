@@ -15,10 +15,11 @@ export class TaskService {
   }
 
   addTask(title: string) {
-    const id = Math.max(...this.tasks.map(task => task.id), 0) + 1;
-    this.tasks.unshift({id: id, title: title, checkbox: false});
-    this.saveTasks();
-
+    if (title !== null && title !== '') {
+      const id = Math.max(...this.tasks.map(task => task.id), 0) + 1;
+      this.tasks.unshift({id: id, title: title, checkbox: false});
+      this.saveTasks();
+    }
   };
 
 
@@ -32,6 +33,12 @@ export class TaskService {
     this.tasks = this.tasks.filter(task => task.id != id);
     this.saveTasks();
   };
+
+  editTask(id: number) {
+
+
+  }
+
 
   clearTask() {
     localStorage.clear();

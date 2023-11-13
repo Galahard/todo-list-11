@@ -4,6 +4,7 @@ import {TaskInterface} from './task/task/taskInterface'
 import {TaskService} from "./task/task.service";
 import {FormControl, Validators} from "@angular/forms";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +20,10 @@ export class AppComponent implements OnInit {
   doneTasks: number;
   progress: number;
   todoTasks: TaskInterface[] = [];
+
+  clickedAct: boolean = false;
+  clickedDone: boolean = false;
+  clickedAll: boolean = false;
 
   newTaskControl = new FormControl('', Validators.required);
 
@@ -50,8 +55,12 @@ export class AppComponent implements OnInit {
   deleteTaskCallback = (id: number) => {
     this.tasksService.deleteTask(id);
     this.getTasks();
-  };
+  }
 
+  editTaskCallback = (id: number) => {
+    this.tasksService.editTask(id);
+    this.getTasks();
+  }
 
   clearTasks() {
     this.tasksService.clearTask();
@@ -63,6 +72,7 @@ export class AppComponent implements OnInit {
   //   this.getTasks();
   // }
 
+
   checkTask(id: number) {
     this.tasksService.checkTask(id);
     this.getTasks();
@@ -71,6 +81,7 @@ export class AppComponent implements OnInit {
   showActTasks() {
     this.todoTasks = this.tasksService.showActTasks();
     this.actTasks = this.todoTasks.length;
+
   }
 
   showDoneTasks() {
@@ -79,9 +90,15 @@ export class AppComponent implements OnInit {
   }
 
   showProgress() {
-    this.progress = this.actTasks / this.totalTasks
+    this.progress = this.doneTasks / this.totalTasks;
     return this.progress
   }
+
+//changeButton(){
+  // this.clicked=!this.clicked;
+
+//}
+
 
 }
 

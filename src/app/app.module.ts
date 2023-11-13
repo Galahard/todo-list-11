@@ -5,20 +5,27 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav/nav.component';
 import {TaskComponent} from './task/task/task.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
+import {ModalComponent} from './task/modal/modal.component';
+import {EditTaskComponent} from './task/edit-task/edit-task.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    TaskComponent
+    TaskComponent,
+    ModalComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
