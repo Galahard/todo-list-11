@@ -38,6 +38,10 @@ export class AppComponent implements OnInit {
   }
 
   getTasks() {
+    this.showActTasks(); ///// вопрос
+    this.showDoneTasks();
+    this.showAllTasks();
+
     if (this.clickedAct) {
       this.showActTasks();
     } else if (this.clickedDone) {
@@ -80,7 +84,7 @@ export class AppComponent implements OnInit {
 
   checkTask(id: number) {
     this.tasksService.checkTask(id);
-    this.getTasks();   // вопрос с фильтром
+    this.getTasks();
   }
 
   showActTasks() {

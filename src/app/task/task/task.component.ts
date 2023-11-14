@@ -15,6 +15,7 @@ export class TaskComponent {
   //@Output() deleteTask = new EventEmitter <void>();
   @Output() checkTask = new EventEmitter<void>();
 
+
   deleteTask() {
     this.deleteFn(this.task.id)
   }
