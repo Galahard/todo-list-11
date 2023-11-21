@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {TaskInterface} from './task/task/taskInterface'
 
 import {TaskService} from "./task/task.service";
 import {FormControl, Validators} from "@angular/forms";
+
+import {ModalService} from "./task/modal/modal.service";
 
 
 @Component({
@@ -28,13 +30,18 @@ export class AppComponent implements OnInit {
 
   newTaskControl = new FormControl('', Validators.required);
 
-  constructor(private readonly tasksService: TaskService) {
+  isVisible: boolean;
+
+
+  constructor(private readonly tasksService: TaskService, private modalService: ModalService) {
+
 
   }
 
   ngOnInit() {
     this.getTasks();
-
+    console.log(this.modalService.isVisible.value)
+    this.toggle()
   }
 
   getTasks() {
@@ -69,6 +76,7 @@ export class AppComponent implements OnInit {
   editTaskCallback = (id: number) => {
     this.tasksService.editTask(id);
     this.getTasks();
+    console.log(this.modalService.isVisible.value)
   }
 
   clearTasks() {
@@ -88,7 +96,7 @@ export class AppComponent implements OnInit {
   }
 
   showActTasks() {
-    this.todoTasks = this.tasksService.showActTasks();
+    this.todoTasks = this.tasksService.showActTasks(); //переделать все в сервис
     this.actTasks = this.todoTasks.length;
 
   }
@@ -106,11 +114,15 @@ export class AppComponent implements OnInit {
 
 
   showProgress() {
-    this.progress = this.doneTasks / this.totalTasks;
+    this.progress = this.doneTasks / this.totalTasks; ///в сервис расчет
     return this.progress
   }
 
+  toggle() {
+    this.isVisible = this.modalService.isVisible.value
+    return this.isVisible
 
+  }
 
 
 }

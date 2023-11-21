@@ -64,13 +64,14 @@
 
   <div class="mt-4 py-1 flex text-center">
     <pagination-controls (pageChange)="p = $event"
-                         [ngClass]="todoTasks.length <= 5 ? 'notDisplay' : 'none'"
+                         *ngIf="todoTasks.length > 5"
                          nextLabel=" " previousLabel=" "></pagination-controls>
   </div>
 </div>
 
 
 <app-modal class="modal"
+           *ngIf="isVisible"
            title="Edit task">
   <app-edit-task></app-edit-task>
 </app-modal>

@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ModalComponent} from './task/modal/modal.component';
 import {EditTaskComponent} from './task/edit-task/edit-task.component';
+import {ModalService} from "./task/modal/modal.service";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {EditTaskComponent} from './task/edit-task/edit-task.component';
     FormsModule,
 
   ],
-  providers: [],
+  providers: [ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TaskInterface} from "./taskInterface";
-
+import {ModalService} from "../modal/modal.service";
 
 @Component({
   selector: 'app-task',
@@ -15,12 +15,24 @@ export class TaskComponent {
   //@Output() deleteTask = new EventEmitter <void>();
   @Output() checkTask = new EventEmitter<void>();
 
+  constructor(private modalService: ModalService) {
+  } ; /// Q?
+
 
   deleteTask() {
     this.deleteFn(this.task.id)
   }
 
   editTask() {
+    this.openModal()
     this.editFn(this.task.id)
+
   }
+
+  openModal() {
+    this.modalService.openModal()
+
+  }
+
+
 }
