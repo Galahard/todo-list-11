@@ -24,9 +24,8 @@ export class AppComponent implements OnInit {
   progress: number;
   todoTasks: TaskInterface[] = [];
 
-  clickedAct: boolean = false;
-  clickedDone: boolean = false;
-  clickedAll: boolean = false;
+
+  activeTab: string = 'allTab';
 
   newTaskControl = new FormControl('', Validators.required);
 
@@ -45,15 +44,14 @@ export class AppComponent implements OnInit {
   }
 
   getTasks() {
-    this.showActTasks(); ///// вопрос
-    this.showDoneTasks();
-    this.showAllTasks();
+    this.tasksService.getTasks();
 
-    if (this.clickedAct) {
+
+    if (this.activeTab === "actTab") {
       this.showActTasks();
-    } else if (this.clickedDone) {
+    } else if (this.activeTab === "doneTab") {
       this.showDoneTasks();
-    } else {
+    } else if (this.activeTab === "allTab") {
       this.showAllTasks();
     }
     this.showProgress();
@@ -98,17 +96,26 @@ export class AppComponent implements OnInit {
   showActTasks() {
     this.todoTasks = this.tasksService.showActTasks(); //переделать все в сервис
     this.actTasks = this.todoTasks.length;
+    this.activeTab = "actTab"
+    return this.activeTab
+
 
   }
 
   showDoneTasks() {
     this.todoTasks = this.tasksService.showDoneTasks();
     this.doneTasks = this.todoTasks.length;
+    this.activeTab = "doneTab"
+    return this.activeTab
+
   }
 
   showAllTasks() {
     this.todoTasks = this.tasksService.showAllTasks();
     this.totalTasks = this.todoTasks.length;
+    this.activeTab = "allTab"
+    return this.activeTab
+
 
   }
 

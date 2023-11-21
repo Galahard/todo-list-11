@@ -21,21 +21,21 @@
       <div class="container text-center mb-3 mt-3">
         <div class="row ">
           <div class="col">
-            <button (click)="showActTasks(); clickedAct=true; clickedDone=false; clickedAll=false"
-                    [ngClass]="clickedAct  ? 'btnActive' : 'none'"
+            <button (click)="showActTasks();  "
+                    [ngClass]="activeTab === 'actTab'  ? 'btnActive' : 'none'"
 
                     class="btn act btn-primary " type="button">Active Tasks {{actTasks}}</button>
           </div>
           <div class="col">
-            <button (click)="showDoneTasks(); clickedDone=true; clickedAct=false; clickedAll=false"
-                    [ngClass]="clickedDone ? 'btnActive' : 'none'"
+            <button (click)="showDoneTasks(); "
+                    [ngClass]="activeTab === 'doneTab' ? 'btnActive' : 'none'"
 
                     class="btn done btn-primary" type="button">Done
               Tasks {{doneTasks}}</button>
           </div>
           <div class="col">
-            <button (click)="showAllTasks(); clickedAll=true; clickedDone=false; clickedAct=false"
-                    [ngClass]="clickedAll   ? 'btnActive' : 'none'"
+            <button (click)="showAllTasks(); "
+                    [ngClass]="activeTab === 'allTab'  ? 'btnActive' : 'none'"
 
                     class="btn all btn-primary " type="button">All
               Tasks {{totalTasks}} </button>
@@ -64,14 +64,14 @@
 
   <div class="mt-4 py-1 flex text-center">
     <pagination-controls (pageChange)="p = $event"
-                         *ngIf="todoTasks.length > 5"
+                         *ngIf="todoTasks.length >5"
                          nextLabel=" " previousLabel=" "></pagination-controls>
   </div>
 </div>
 
 
 <app-modal class="modal"
-           *ngIf="isVisible"
+           *ngIf="isVisible=== true"
            title="Edit task">
   <app-edit-task></app-edit-task>
 </app-modal>
