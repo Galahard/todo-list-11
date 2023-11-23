@@ -16,7 +16,7 @@ export class TaskComponent {
   @Output() checkTask = new EventEmitter<void>();
 
   constructor(private modalService: ModalService) {
-  } ; /// Q?
+  } ;
 
 
   deleteTask() {
@@ -31,8 +31,6 @@ export class TaskComponent {
 
   openModal() {
     this.modalService.openModal()
-
   }
-
 
 }

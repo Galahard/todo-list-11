@@ -1,10 +1,11 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TaskInterface} from './task/task/taskInterface'
 
 import {TaskService} from "./task/task.service";
 import {FormControl, Validators} from "@angular/forms";
 
 import {ModalService} from "./task/modal/modal.service";
+import {BehaviorSubject} from "rxjs";
 
 
 @Component({
@@ -13,6 +14,8 @@ import {ModalService} from "./task/modal/modal.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+
   title = 'angular todo';
   p: number = 1;
 
@@ -29,23 +32,24 @@ export class AppComponent implements OnInit {
 
   newTaskControl = new FormControl('', Validators.required);
 
-  isVisible: boolean;
+  isVisible: BehaviorSubject<boolean>;
 
 
   constructor(private readonly tasksService: TaskService, private modalService: ModalService) {
-
 
   }
 
   ngOnInit() {
     this.getTasks();
-    console.log(this.modalService.isVisible.value)
-    this.toggle()
+    this.isVisible = this.modalService.isVisible
+
   }
 
   getTasks() {
     this.tasksService.getTasks();
-
+    this.actTasks = this.tasksService.numberActTasks
+    this.doneTasks = this.tasksService.numberDoneTasks
+    this.totalTasks = this.tasksService.totalTasks
 
     if (this.activeTab === "actTab") {
       this.showActTasks();
@@ -94,8 +98,7 @@ export class AppComponent implements OnInit {
   }
 
   showActTasks() {
-    this.todoTasks = this.tasksService.showActTasks(); //переделать все в сервис
-    this.actTasks = this.todoTasks.length;
+    this.todoTasks = this.tasksService.showActTasks();
     this.activeTab = "actTab"
     return this.activeTab
 
@@ -104,7 +107,6 @@ export class AppComponent implements OnInit {
 
   showDoneTasks() {
     this.todoTasks = this.tasksService.showDoneTasks();
-    this.doneTasks = this.todoTasks.length;
     this.activeTab = "doneTab"
     return this.activeTab
 
@@ -112,7 +114,6 @@ export class AppComponent implements OnInit {
 
   showAllTasks() {
     this.todoTasks = this.tasksService.showAllTasks();
-    this.totalTasks = this.todoTasks.length;
     this.activeTab = "allTab"
     return this.activeTab
 
@@ -121,15 +122,11 @@ export class AppComponent implements OnInit {
 
 
   showProgress() {
-    this.progress = this.doneTasks / this.totalTasks; ///в сервис расчет
+    this.progress = this.tasksService.countProgress()
     return this.progress
   }
 
-  toggle() {
-    this.isVisible = this.modalService.isVisible.value
-    return this.isVisible
 
-  }
 
 
 }

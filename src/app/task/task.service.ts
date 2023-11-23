@@ -10,6 +10,11 @@ export class TaskService {
   doneTasks: TaskInterface[] = [];
 
   tasks: TaskInterface[] = [];
+  numberActTasks: number;
+  numberDoneTasks: number;
+  totalTasks: number;
+
+  progress: number;
 
   constructor() {
   }
@@ -25,6 +30,9 @@ export class TaskService {
 
   getTasks() {
     this.loadTasks();
+    this.countActTasks();
+    this.countDoneTasks();
+    this.countAllTasks()
     return this.tasks;
 
   };
@@ -68,7 +76,7 @@ export class TaskService {
   showActTasks() {
     this.loadTasks();
     this.actTasks = this.tasks.filter(tasks => !tasks.checkbox);
-    return this.actTasks;
+    return this.actTasks
   }
 
   showDoneTasks() {
@@ -82,5 +90,26 @@ export class TaskService {
     return this.tasks
   }
 
+  countActTasks() {
+    this.showActTasks();
+    this.numberActTasks = this.actTasks.length;
+    return this.numberActTasks;
+  }
 
+  countDoneTasks() {
+    this.showDoneTasks();
+    this.numberDoneTasks = this.doneTasks.length;
+    return this.numberDoneTasks;
+  }
+
+  countAllTasks() {
+    this.loadTasks();
+    this.totalTasks = this.tasks.length;
+    return this.totalTasks
+  }
+
+  countProgress() {
+    this.progress = this.numberDoneTasks / this.totalTasks;
+    return this.progress
+  }
 }
