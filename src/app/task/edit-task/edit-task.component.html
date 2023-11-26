@@ -1,0 +1,10 @@
+<form (ngSubmit)='submit()'>
+  <input
+    [formControl]="newTitle"
+    class="edit-input">
+
+  <button (click)="submit()"
+          [disabled]="newTitle.invalid"
+          class="bg-primary ">Submit
+  </button>
+</form>

@@ -1,0 +1,17 @@
+<div class="modal-bg"
+
+>
+  <div class=" modal-w bg-white rounded ">
+
+
+    <h1 class="text-center mb-2  "> {{title | titlecase}}</h1>
+    <hr>
+    <button (click)="closeModal()"
+
+            class="btn close btn-danger" type="button">&#10008;
+    </button>
+
+    <ng-content></ng-content>
+
+  </div>
+</div>
