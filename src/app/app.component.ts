@@ -5,7 +5,7 @@ import {TaskService} from "./task/task.service";
 import {FormControl, Validators} from "@angular/forms";
 
 import {ModalService} from "./task/modal/modal.service";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, filter} from "rxjs";
 
 
 @Component({
@@ -40,8 +40,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTasks();
     this.isVisible = this.modalService.isVisible
+    this.isVisible.pipe(filter(isVisible => !isVisible)).subscribe(() => this.getTasks())
 
   }
 
@@ -75,21 +75,11 @@ export class AppComponent implements OnInit {
     this.getTasks();
   }
 
-  editTaskCallback = (id: number) => {
-    this.tasksService.editTask(id);
-    this.getTasks();
-    console.log(this.modalService.isVisible.value)
-  }
 
   clearTasks() {
     this.tasksService.clearTask();
     this.getTasks();
   }
-
-  // deleteTask(id: number) {
-  //   this.tasksService.deleteTask(id);
-  //   this.getTasks();
-  // }
 
 
   checkTask(id: number) {

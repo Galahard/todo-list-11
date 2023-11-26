@@ -50,7 +50,6 @@
   <app-task (checkTask)="checkTask(task.id) "
             *ngFor="let task of todoTasks | paginate: { itemsPerPage: tasksPerPage, currentPage: p}"
             [deleteFn]="deleteTaskCallback"
-            [editFn]="editTaskCallback"
             [task]="task">
 
   </app-task>
@@ -71,7 +70,7 @@
 
 
 <app-modal class="modal"
-           *ngIf="isVisible"
+           *ngIf="isVisible | async"
            title="Edit task">
   <app-edit-task></app-edit-task>
 </app-modal>

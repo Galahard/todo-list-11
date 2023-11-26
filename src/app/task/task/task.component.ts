@@ -10,7 +10,7 @@ import {ModalService} from "../modal/modal.service";
 export class TaskComponent {
   @Input() task: TaskInterface;
   @Input() deleteFn: (a: number) => void;
-  @Input() editFn: (a: number) => void;
+
 
   //@Output() deleteTask = new EventEmitter <void>();
   @Output() checkTask = new EventEmitter<void>();
@@ -24,13 +24,9 @@ export class TaskComponent {
   }
 
   editTask() {
-    this.openModal()
-    this.editFn(this.task.id)
+    this.modalService.openModal(this.task)
 
   }
 
-  openModal() {
-    this.modalService.openModal()
-  }
 
 }

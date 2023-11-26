@@ -42,9 +42,18 @@ export class TaskService {
     this.saveTasks();
   };
 
-  editTask(id: number) {
+  editTask(id: number, newTitle: string) {
+    this.tasks = this.tasks.map(item => {
+      if (id != item.id) {
+        return item
+      }
+      return {
+        ...item,
+        title: newTitle
+      }
+    })
 
-
+    this.saveTasks();
   }
 
 
