@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NavComponent} from './nav/nav/nav.component';
 import {TaskComponent} from './task/task/task.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -15,7 +14,6 @@ import {ModalService} from "./task/modal/modal.service";
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     TaskComponent,
     ModalComponent,
     EditTaskComponent

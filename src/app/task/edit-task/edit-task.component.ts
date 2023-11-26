@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-
 import {ModalService} from "../modal/modal.service";
 import {TaskService} from "../task.service";
 

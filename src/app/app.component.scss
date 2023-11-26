@@ -1,31 +1,31 @@
-  .ngx-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-  }
+.ngx-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
 
-  .ngx-pagination li {
+.ngx-pagination li {
 
-    border-radius: 50%;
-  }
-
-
-  .modal {
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    //display: none;
-  }
+  border-radius: 50%;
+}
 
 
-  .btn:active {
-    transform: translateY(4px);
-  }
+.modal {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 
-  .btnActive {
-    background-color: darkslateblue;
-  }
+}
+
+
+.btn:active {
+  transform: translateY(4px);
+}
+
+.btnActive {
+  background-color: darkslateblue;
+}
 
 
