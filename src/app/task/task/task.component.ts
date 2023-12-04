@@ -12,7 +12,6 @@ export class TaskComponent {
   @Input() deleteFn: (a: number) => void;
 
 
-  //@Output() deleteTask = new EventEmitter <void>();
   @Output() checkTask = new EventEmitter<void>();
 
   constructor(private modalService: ModalService) {
